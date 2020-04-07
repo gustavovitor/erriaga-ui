@@ -1,0 +1,23 @@
+<div class="card">
+  <div class="card-header cursor-pointer" (click)="showFilters = !showFilters">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col d-flex align-items-center">
+          <h6 class="card-title m-0"><i class="fa fa-filter"></i>&nbsp;<strong>Filtros de Pesquisa</strong></h6>
+        </div>
+        <div class="col d-flex align-items-center justify-content-end">
+          <i [class]="showFilters ? 'fa fa-arrow-up' : 'fa fa-arrow-down'" class="text-primary"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-body" *ngIf="showFilters" [@inOutOpacityAnimation]>
+    <app-person-filter-form (whenSearch)="search($event)"></app-person-filter-form>
+  </div>
+</div>
+
+<div class="card mt-3">
+  <div class="card-body">
+    <app-person-list #appPersonList></app-person-list>
+  </div>
+</div>

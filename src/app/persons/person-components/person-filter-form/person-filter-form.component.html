@@ -1,0 +1,52 @@
+<form (ngSubmit)="search()">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12 col-md-3">
+        <div class="form-group">
+          <label for="cod">Cód.</label>
+          <input type="number" class="form-control" id="cod" placeholder="Código" [(ngModel)]="filter.id" [ngModelOptions]="{standalone: true}">
+        </div>
+      </div>
+
+      <div class="col-sm-12 col-md-3">
+        <div class="form-group">
+          <label for="nome">Nome</label>
+          <input type="text" class="form-control" id="nome" placeholder="Nome" [(ngModel)]="filter.name" [ngModelOptions]="{standalone: true}">
+        </div>
+      </div>
+
+      <div class="col-sm-12 col-md-3">
+        <div class="form-group">
+          <label for="nome">Email</label>
+          <input type="text" class="form-control" id="email" placeholder="Email" [(ngModel)]="filter.email" [ngModelOptions]="{standalone: true}">
+        </div>
+      </div>
+
+      <div class="col-sm-12 col-md-3">
+        <div class="form-group">
+          <label for="cpf">CPF</label>
+          <input type="number" class="form-control" id="cpf" placeholder="CPF" [(ngModel)]="filter.cpf" [ngModelOptions]="{standalone: true}">
+        </div>
+      </div>
+
+      <div class="col-sm-12 col-md-3">
+        <div class="form-group">
+          <label for="nome">Nacionalidade</label>
+          <input type="text" class="form-control" id="nationality" placeholder="Nacionalidade" [(ngModel)]="filter.nationality" [ngModelOptions]="{standalone: true}">
+        </div>
+      </div>
+
+      <div class="col-sm-12 col-md-3">
+        <div class="form-group">
+          <label for="nome">Naturalidade</label>
+          <input type="text" class="form-control" id="birthPlace" placeholder="Naturalidade" [(ngModel)]="filter.birthPlace" [ngModelOptions]="{standalone: true}">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col d-flex align-items-center justify-content-end">
+        <button class="btn btn-primary text-white">Pesquisar</button>
+      </div>
+    </div>
+  </div>
+</form>
