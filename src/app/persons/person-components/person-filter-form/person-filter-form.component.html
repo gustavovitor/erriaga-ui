@@ -42,6 +42,53 @@
           <input type="text" class="form-control" id="birthPlace" placeholder="Naturalidade" [(ngModel)]="filter.birthPlace" [ngModelOptions]="{standalone: true}">
         </div>
       </div>
+
+      <div class="col-sm-12 col-md-6">
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label for="birthDateStart">Data de Nascimento</label>
+              <div class="row">
+                <div class="col-5">
+                  <div class="input-group">
+                    <input id="birthDateStart" type="text" class="form-control" aria-label="Data de Nascimento" name="birthDateStart"
+                           dlDateTimeInput [(ngModel)]="filter.birthDateStart" [placeholder]="placeHolder" >
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-secondary dropdown-toggle start-date" type="button" data-toggle="dropdown"
+                              aria-haspopup="true" aria-expanded="false"><i class="oi oi-calendar"></i></button>
+                      <div class="dropdown-menu" (click)="keepDropDownOpen($event)">
+                        <div style="width:360px;">
+                          <dl-date-time-picker [(ngModel)]="filter.birthDateStart" maxView="year" minView="day"
+                                               name="birthDateStart" [ngModelOptions]="{standalone: true}"></dl-date-time-picker>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-2 text-center">
+                  até
+                </div>
+                <div class="col-5">
+                  <div class="input-group">
+                    <input id="birthDateEnd" type="text" class="form-control" aria-label="Data de Nascimento" name="birthDateEnd"
+                           dlDateTimeInput [(ngModel)]="filter.birthDateEnd" [placeholder]="placeHolder">
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-secondary dropdown-toggle start-date" type="button" data-toggle="dropdown"
+                              aria-haspopup="true" aria-expanded="false"><i class="oi oi-calendar"></i></button>
+                      <div class="dropdown-menu" (click)="keepDropDownOpen($event)">
+                        <div style="width:360px;">
+                          <dl-date-time-picker [(ngModel)]="filter.birthDateEnd" maxView="year" minView="day"
+                                               name="birthDateStart" [ngModelOptions]="{standalone: true}"></dl-date-time-picker>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="row">
       <div class="col d-flex align-items-center justify-content-end">

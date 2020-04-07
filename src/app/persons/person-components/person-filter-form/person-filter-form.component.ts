@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { PersonFilterModel } from '../../../models/person.model';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-person-filter-form',
@@ -9,6 +10,9 @@ import { PersonFilterModel } from '../../../models/person.model';
 export class PersonFilterFormComponent implements OnInit {
 
   filter = new PersonFilterModel();
+
+  placeHolder = moment.localeData().longDateFormat('L');
+
   @Output() whenSearch = new EventEmitter();
 
   constructor() { }
@@ -19,4 +23,10 @@ export class PersonFilterFormComponent implements OnInit {
   search() {
     this.whenSearch.emit(this.filter);
   }
+
+  keepDropDownOpen(event: Event) {
+    event.stopPropagation();
+  }
+
+
 }

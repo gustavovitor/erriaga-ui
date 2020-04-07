@@ -1,1 +1,17 @@
-<p>person-form-page works!</p>
+<div class="card mt-3">
+  <div class="card-header">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col d-flex align-items-center">
+          <h6 class="card-title m-0"><i class="fa fa-user-plus"></i>&nbsp;<strong>Nova Pessoa</strong></h6>
+        </div>
+        <div class="col d-flex align-items-center justify-content-end">
+          <button type="button" (click)="router.navigate(['/'])" class="btn btn-primary text-white">Voltar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <app-person-form></app-person-form>
+  </div>
+</div>

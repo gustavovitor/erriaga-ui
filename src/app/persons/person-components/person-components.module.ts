@@ -4,7 +4,9 @@ import { PersonListComponent } from './person-list/person-list.component';
 import { PersonFormComponent } from './person-form/person-form.component';
 import { SharedModule } from '../../shared/shared.module';
 import { PersonFilterFormComponent } from './person-filter-form/person-filter-form.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DlDateTimeDateModule, DlDateTimeInputModule, DlDateTimePickerModule } from 'angular-bootstrap-datetimepicker';
+import { NgBootstrapFormValidationModule } from 'ng-bootstrap-form-validation';
 
 
 
@@ -13,7 +15,12 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     SharedModule,
-    FormsModule
+    DlDateTimeDateModule,
+    NgBootstrapFormValidationModule,
+    DlDateTimePickerModule,
+    FormsModule,
+    DlDateTimeInputModule,
+    ReactiveFormsModule
   ],
   exports: [PersonListComponent, PersonFormComponent, PersonFilterFormComponent]
 })

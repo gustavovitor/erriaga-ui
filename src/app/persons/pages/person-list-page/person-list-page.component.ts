@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { inOutOpacityAnimation } from '../../../shared/animations/animations';
 import { PersonFilterModel } from '../../../models/person.model';
 import { PersonListComponent } from '../../person-components/person-list/person-list.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-person-list-page',
@@ -15,7 +16,7 @@ export class PersonListPageComponent implements OnInit {
 
   showFilters = false;
 
-  constructor() { }
+  constructor(public router: Router) { }
 
   ngOnInit(): void {
   }

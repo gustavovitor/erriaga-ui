@@ -17,6 +17,18 @@
 </div>
 
 <div class="card mt-3">
+  <div class="card-header">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col d-flex align-items-center">
+          <h6 class="card-title m-0"><i class="fa fa-user-circle-o"></i>&nbsp;<strong>Pessoas</strong></h6>
+        </div>
+        <div class="col d-flex align-items-center justify-content-end">
+          <button type="button" (click)="router.navigate(['/form'])" class="btn btn-primary text-white">Nova</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="card-body">
     <app-person-list #appPersonList></app-person-list>
   </div>
