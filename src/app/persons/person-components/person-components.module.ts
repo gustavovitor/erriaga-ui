@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { PersonListComponent } from './person-list/person-list.component';
 import { PersonFormComponent } from './person-form/person-form.component';
 import { SharedModule } from '../../shared/shared.module';
@@ -22,6 +22,7 @@ import { NgBootstrapFormValidationModule } from 'ng-bootstrap-form-validation';
     DlDateTimeInputModule,
     ReactiveFormsModule
   ],
+  providers: [DatePipe],
   exports: [PersonListComponent, PersonFormComponent, PersonFilterFormComponent]
 })
 export class PersonComponentsModule { }

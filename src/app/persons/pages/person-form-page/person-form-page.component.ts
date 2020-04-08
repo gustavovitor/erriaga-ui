@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { PersonFormComponent } from '../../person-components/person-form/person-form.component';
 
 @Component({
   selector: 'app-person-form-page',
@@ -10,7 +11,15 @@ export class PersonFormPageComponent implements OnInit {
 
   constructor(public router: Router) { }
 
+  @ViewChild('appPersonForm') appPersonForm: PersonFormComponent;
 
+  get isEdit(): boolean {
+    if (this.appPersonForm) {
+      return this.appPersonForm.isEdit;
+    } else {
+      return false;
+    }
+  }
 
   ngOnInit(): void {
   }

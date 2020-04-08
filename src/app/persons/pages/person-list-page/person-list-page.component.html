@@ -12,7 +12,7 @@
     </div>
   </div>
   <div class="card-body" *ngIf="showFilters" [@inOutOpacityAnimation]>
-    <app-person-filter-form (whenSearch)="search($event)"></app-person-filter-form>
+    <app-person-filter-form [filter]="filter" (whenSearch)="search()"></app-person-filter-form>
   </div>
 </div>
 
@@ -30,6 +30,6 @@
     </div>
   </div>
   <div class="card-body">
-    <app-person-list #appPersonList></app-person-list>
+    <app-person-list [filter]="filter" #appPersonList></app-person-list>
   </div>
 </div>

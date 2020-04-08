@@ -14,6 +14,8 @@ export class PersonListPageComponent implements OnInit {
 
   @ViewChild('appPersonList', { static: true }) appPersonList: PersonListComponent;
 
+  filter = new PersonFilterModel();
+
   showFilters = false;
 
   constructor(public router: Router) { }
@@ -21,8 +23,8 @@ export class PersonListPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  search(filter: PersonFilterModel) {
-    this.appPersonList.search(filter);
+  search() {
+    this.appPersonList.search();
   }
 
 }

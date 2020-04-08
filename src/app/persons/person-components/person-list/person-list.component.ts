@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { PERSON_LIST_COLUMNS } from './person-list-columns';
 import { DataTableAction } from '../../../shared/data-table/data-table.component';
 import { PersonFilterModel, PersonModel } from '../../../models/person.model';
@@ -16,7 +16,7 @@ export class PersonListComponent implements OnInit {
 
   @ViewChild('personListTable') personListTable;
 
-  filter: PersonFilterModel = new PersonFilterModel();
+  @Input() filter: PersonFilterModel;
   TABLE_URL = environment.URL_PERSON + '/search/page';
   TABLE_COLUMNS = PERSON_LIST_COLUMNS;
   TABLE_ACTIONS: Array<DataTableAction> = [
@@ -37,11 +37,10 @@ export class PersonListComponent implements OnInit {
   ];
 
   navigateToEdit(data: PersonModel) {
-    this.router.navigate(['/', data.id]);
+    this.router.navigate(['/form', data.id]);
   }
 
-  search(filter: PersonFilterModel) {
-    this.filter = filter;
+  search() {
     this.personListTable.instanceTable.ajax.reload();
   }
 

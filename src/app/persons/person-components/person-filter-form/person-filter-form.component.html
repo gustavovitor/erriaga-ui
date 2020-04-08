@@ -52,7 +52,7 @@
                 <div class="col-5">
                   <div class="input-group">
                     <input id="birthDateStart" type="text" class="form-control" aria-label="Data de Nascimento" name="birthDateStart"
-                           dlDateTimeInput [(ngModel)]="filter.birthDateStart" [placeholder]="placeHolder" >
+                           [ngModel]="filter.birthDateStart | date: 'dd/MM/yyyy'" (ngModelChange)="filter.birthDateStart=$event" [placeholder]="placeHolder" disabled>
                     <div class="input-group-append">
                       <button class="btn btn-outline-secondary dropdown-toggle start-date" type="button" data-toggle="dropdown"
                               aria-haspopup="true" aria-expanded="false"><i class="oi oi-calendar"></i></button>
@@ -71,7 +71,7 @@
                 <div class="col-5">
                   <div class="input-group">
                     <input id="birthDateEnd" type="text" class="form-control" aria-label="Data de Nascimento" name="birthDateEnd"
-                           dlDateTimeInput [(ngModel)]="filter.birthDateEnd" [placeholder]="placeHolder">
+                           [ngModel]="filter.birthDateEnd | date: 'dd/MM/yyyy'" (ngModelChange)="filter.birthDateEnd=$event" [placeholder]="placeHolder" disabled>
                     <div class="input-group-append">
                       <button class="btn btn-outline-secondary dropdown-toggle start-date" type="button" data-toggle="dropdown"
                               aria-haspopup="true" aria-expanded="false"><i class="oi oi-calendar"></i></button>

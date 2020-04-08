@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { PersonFilterModel } from '../../../models/person.model';
 import * as moment from 'moment';
 
@@ -9,7 +9,7 @@ import * as moment from 'moment';
 })
 export class PersonFilterFormComponent implements OnInit {
 
-  filter = new PersonFilterModel();
+  @Input() filter: PersonFilterModel;
 
   placeHolder = moment.localeData().longDateFormat('L');
 
@@ -21,7 +21,7 @@ export class PersonFilterFormComponent implements OnInit {
   }
 
   search() {
-    this.whenSearch.emit(this.filter);
+    this.whenSearch.emit();
   }
 
   keepDropDownOpen(event: Event) {

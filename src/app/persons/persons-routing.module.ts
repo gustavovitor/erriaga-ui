@@ -9,11 +9,11 @@ const routes: Routes = [
     component: PersonListPageComponent
   },
   {
-    path: ':id',
+    path: 'form/:id',
     component: PersonFormPageComponent
   },
   {
-    path: '/form',
+    path: 'form',
     component: PersonFormPageComponent
   }
 ];
