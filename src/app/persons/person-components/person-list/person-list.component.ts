@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { PERSON_LIST_COLUMNS } from './person-list-columns';
 import { DataTableAction } from '../../../shared/data-table/data-table.component';
-import { PersonFilterModel, PersonModel } from '../../../models/person.model';
+import { PersonFilterModel, PersonModel } from '../../../models/person-model';
 import { Router } from '@angular/router';
 import { environment } from '../../../../environments/environment';
 

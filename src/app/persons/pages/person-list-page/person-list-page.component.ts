@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { inOutOpacityAnimation } from '../../../shared/animations/animations';
-import { PersonFilterModel } from '../../../models/person.model';
+import { PersonFilterModel } from '../../../models/person-model';
 import { PersonListComponent } from '../../person-components/person-list/person-list.component';
 import { Router } from '@angular/router';
 

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { PersonService } from '../../../services/person.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PersonModel } from '../../../models/person.model';
+import { PersonModel } from '../../../models/person-model';
 import * as moment from 'moment';
 
 @Component({

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { PersonFilterModel } from '../../../models/person.model';
+import { PersonFilterModel } from '../../../models/person-model';
 import * as moment from 'moment';
 
 @Component({
