@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { environment } from '../../environments/environment';
 import { AppUserModel } from '../models/app-user-model';
+import { Observable, Subscription } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,7 @@ export class AuthService {
   URL = environment.URL_AUTH;
   URLUser = environment.URL_USER;
   jwtPayLoad: any;
+  token: string;
 
   /* loadToken é responsável por carregar o token do localstorage caso já haja um, e injeta-o no serviço. */
   private loadToken() {
@@ -33,6 +35,7 @@ export class AuthService {
   /* saveToken injeta o token no serviço. */
   private saveToken(token: string) {
     this.jwtPayLoad = this.jwtHelper.decodeToken(token);
+    this.token = token;
     localStorage.setItem('access_token', token);
   }
 
@@ -78,27 +81,29 @@ export class AuthService {
       });
   }
 
+  getNewAccessTokenSync() {
+    let headers = new HttpHeaders();
+    headers = headers.append('Authorization', this.getBasicSecurity());
+    headers = headers.append('Content-Type', 'application/x-www-form-urlencoded');
+
+    const body = 'grant_type=refresh_token';
+    this.http.post<any>(this.URL, body, {headers, withCredentials: true})
+      .subscribe(res => {
+        this.saveToken(res.access_token);
+      });
+  }
+
   /** isAccessTokenInvalid checa se o token é inválido. */
   get isAccessTokenInvalid() {
     const token = localStorage.getItem('access_token');
     return !token || this.jwtHelper.isTokenExpired(token);
   }
 
-  async getValidAccessToken() {
+  getValidAccessToken() {
     if (this.isAccessTokenInvalid) {
-      await this.getNewAccessToken();
-      if (!this.isAccessTokenInvalid) {
-        return localStorage.getItem('access_token');
-      } else {
-        console.log('Access token inválido');
-      }
+      this.getNewAccessTokenSync();
     }
-    return localStorage.getItem('access_token');
-  }
-
-  /** hasAuthority checa se o token atual tem permissão para determinada ação. */
-  hasAuthority(permission: string) {
-    return this.jwtPayLoad && this.jwtPayLoad.authorities.includes(permission);
+    return this.token;
   }
 
   /** cleanAccessToken remove o token do localStorage. */

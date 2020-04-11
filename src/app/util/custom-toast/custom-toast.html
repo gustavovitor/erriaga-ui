@@ -1,0 +1,38 @@
+<div class="notyf__toast notyf__toast" [ngClass]="notyfToast">
+  <div class="notyf__wrapper">
+    <div class="notyf__message">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-1 d-flex">
+            <i class="fa fa-check-circle toast-icon" *ngIf="principalClass === 'success'"></i>
+            <i class="fa fa-info-circle toast-icon" *ngIf="principalClass === 'info'"></i>
+            <i class="fa fa-exclamation-circle toast-icon" *ngIf="principalClass === 'warning'"></i>
+            <i class="fa fa-bomb toast-icon" *ngIf="principalClass === 'error'"></i>
+          </div>
+          <div class="col-9">
+            <div class="row">
+              <div class="col-12 font-weight-bold">
+                {{ title }}
+              </div>
+              <div class="col-12 mt-1">
+                {{ message }}
+              </div>
+            </div>
+            <div class="row mt-3" *ngIf="showActionButton">
+              <div class="col-12">
+                <button class="btn btn-secondary width-100" (click)="onAction()" appAutofocus>{{ actionButtonText }}</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-1 d-flex">
+            <i class="fa fa-close align-self-center toast-icon" (click)="close()"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="notyf__ripple"
+    [ngClass]="bgClass"
+  ></div>
+</div>

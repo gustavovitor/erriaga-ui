@@ -75,8 +75,11 @@ export class DataTableComponent implements OnInit, AfterViewInit {
         url: this.url,
         type: 'PUT',
         headers: {
-          Authorization: 'Bearer ' + await this.authService.getValidAccessToken(),
           'Content-Type': 'application/json'
+        },
+        beforeSend: (xhr: XMLHttpRequest) => {
+          const token = this.authService.getValidAccessToken();
+          xhr.setRequestHeader('Authorization', 'Bearer ' + token);
         },
         data: (params) => {
           if (this.pageable) {

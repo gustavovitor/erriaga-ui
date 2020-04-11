@@ -8,10 +8,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CUSTOM_ERROR_MESSAGES, NgBootstrapFormValidationModule } from 'ng-bootstrap-form-validation';
 
 import * as moment from 'moment';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CUSTOM_ERRORS } from './validation-messages';
 import { JwtModule } from '@auth0/angular-jwt';
 import { environment } from '../environments/environment';
+import { HttpClientInterceptor } from './services/http-client-interceptor';
+import { ToastrModule } from 'ngx-toastr';
+import { CustomToastComponent } from './util/custom-toast/custom-toast';
+import { SharedModule } from './shared/shared.module';
 
 moment.locale('pt-BR');
 
@@ -22,6 +26,7 @@ export function tokenGetter() {
 @NgModule({
   declarations: [
     AppComponent,
+    CustomToastComponent
   ],
   imports: [
     BrowserModule,
@@ -34,9 +39,13 @@ export function tokenGetter() {
       }
     }),
     BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      toastComponent: CustomToastComponent
+    }),
     NgxMaskModule.forRoot(),
     NgBootstrapFormValidationModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule
   ],
   providers: [
     {
@@ -44,7 +53,13 @@ export function tokenGetter() {
       useValue: CUSTOM_ERRORS,
       multi: true
     },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpClientInterceptor,
+      multi: true
+    }
   ],
+  entryComponents: [CustomToastComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,51 @@
+@import "../../../variables";
+
+$success-color: $primary;
+$error-color: rgb(208, 72, 53);
+$warning-color: rgb(199, 180, 13);
+$info-color: rgb(67, 100, 199);
+
+.bg-error {
+  background-color: $error-color;
+}
+
+.bg-success {
+  background-color: $success-color;
+}
+
+.bg-warning {
+  background-color: $warning-color;
+}
+
+.bg-info {
+  background-color: $info-color;
+}
+
+.color-error {
+  color: $error-color;
+}
+
+.color-success {
+  color: $success-color;
+}
+
+.color-warning {
+  color: $warning-color;
+}
+
+.color-info {
+  color: $info-color;
+}
+
+.toast-icon {
+  font-size: 24px;
+}
+
+.width-100 {
+  width: 100%;
+}
+
+.notyf__ripple {
+  width: 800px;
+  height: 800px;
+}
