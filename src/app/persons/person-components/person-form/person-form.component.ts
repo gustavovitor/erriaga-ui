@@ -4,6 +4,7 @@ import { PersonService } from '../../../services/person.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PersonModel } from '../../../models/person-model';
 import * as moment from 'moment';
+import { ErrorHandlerService } from '../../../services/error-handler.service';
 
 @Component({
   selector: 'app-person-form',
@@ -13,6 +14,7 @@ import * as moment from 'moment';
 export class PersonFormComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
+              private errorHandlerService: ErrorHandlerService,
               private personService: PersonService,
               private router: Router,
               private activatedRoute: ActivatedRoute) { }
@@ -70,6 +72,7 @@ export class PersonFormComponent implements OnInit {
         await this.router.navigate(['']);
       }
     } catch (e) {
+      this.errorHandlerService.handler(e.error);
       this.personForm.enable();
     }
   }
