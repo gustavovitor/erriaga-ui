@@ -11,7 +11,7 @@ export class ErrorHandlerService {
   handler(err: APIError) {
     if (err) {
       err.errors.forEach(error => {
-        this.toastService.error(error.error);
+        this.toastService.error(error.message);
       });
     }
   }

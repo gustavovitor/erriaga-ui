@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
+import { ErrorHandlerService } from '../../../services/error-handler.service';
 
 @Component({
   selector: 'app-auth-register-form',
@@ -12,6 +13,7 @@ export class AuthRegisterFormComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private authService: AuthService,
+              private errorHandlerService: ErrorHandlerService,
               private router: Router) { }
 
   authRegisterForm = this.formBuilder.group({
@@ -36,6 +38,7 @@ export class AuthRegisterFormComponent implements OnInit {
         await this.router.navigate(['']);
       })
       .catch((err) => {
+        this.errorHandlerService.handler(err.error);
         this.authRegisterForm.enable();
       });
   }

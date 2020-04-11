@@ -21,7 +21,7 @@ export class ToastService {
   }
 
   error(msg: string) {
-    this.toast.error(msg, 'Opa, pera lá.', { easeTime: 10000000, positionClass: 'toast-bottom-right' });
+    this.toast.error(msg, 'Opa, pera lá.', { easeTime: 10000, positionClass: 'toast-bottom-right' });
   }
 
 }
