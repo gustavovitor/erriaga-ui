@@ -16,6 +16,7 @@ export class AuthService {
 
   URL = environment.URL_AUTH;
   URLUser = environment.URL_USER;
+  URLToken = environment.URL_TOKEN_REVOKE;
   jwtPayLoad: any;
   token: string;
 
@@ -108,6 +109,7 @@ export class AuthService {
 
   /** cleanAccessToken remove o token do localStorage. */
   cleanAccessToken() {
+    this.token = null;
     localStorage.removeItem('access_token');
     this.jwtPayLoad = null;
   }
@@ -129,7 +131,9 @@ export class AuthService {
     }
   }
 
-  logout() {
-    this.cleanAccessToken();
+  logout(): Promise<void> {
+    return this.http.delete<void>(`${this.URLToken}`, { headers: {
+        Authorization: 'Bearer ' + this.token
+      }, withCredentials: true }).toPromise();
   }
 }
