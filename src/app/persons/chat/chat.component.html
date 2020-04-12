@@ -18,6 +18,9 @@
       <div class="no-message" *ngIf="messages.length == 0">
         Nenhuma mensagem encontrada..
       </div>
+      <div *ngIf="hasNext" style="width: 100%; margin-bottom: 16px">
+        <button class="btn btn-primary text-white" style="width: 100%" (click)="loadMessages(page + 1)">Carregar Mais</button>
+      </div>
       <div class="message" *ngFor="let msg of messages">
         <div class="message-owner">
           {{ msg.owner.name }}

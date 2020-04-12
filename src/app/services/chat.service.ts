@@ -16,16 +16,16 @@ export class ChatService {
     return this.httpClient.post<ChatMessageModel>(this.URL, { message }).toPromise();
   }
 
-  async findAllMessages(page = 0): Promise<Array<ChatMessageModel>> {
-    const params = new HttpParams();
-    params.append('page', page.toString());
-    params.append('size', '10');
+  async findAllMessages(page = 0): Promise<PageableResponse<ChatMessageModel>> {
+    let params = new HttpParams();
+    params = params.append('page', page.toString());
+    params = params.append('size', '10');
 
-    const pageableData = await this.httpClient.get<PageableResponse<ChatMessageModel>>(this.URL, { params }).toPromise();
-    return pageableData.content;
+    return await this.httpClient.get<PageableResponse<ChatMessageModel>>(this.URL, {params}).toPromise();
   }
 }
 
 class PageableResponse<T> {
   content: Array<T>;
+  last: boolean;
 }

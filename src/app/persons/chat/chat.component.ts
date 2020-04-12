@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { inOutOpacityAnimation } from '../../shared/animations/animations';
 import { ChatService } from '../../services/chat.service';
 import { ChatMessageModel } from '../../models/chat-message-model';
@@ -10,7 +10,7 @@ import { ErrorHandlerService } from '../../services/error-handler.service';
   styleUrls: ['./chat.component.scss'],
   animations: [inOutOpacityAnimation]
 })
-export class ChatComponent implements OnInit, AfterViewInit {
+export class ChatComponent implements OnInit, AfterViewInit, OnDestroy {
 
   constructor(private chatService: ChatService,
               private errorHandlerService: ErrorHandlerService) { }
@@ -20,25 +20,32 @@ export class ChatComponent implements OnInit, AfterViewInit {
   loading = false;
   notify = false;
   newMessagesCount = 0;
+  interval;
+  hasNext = false;
+  page = 0;
 
   messages: Array<ChatMessageModel> = [];
 
   ngOnInit(): void {
     this.loadMessages();
-    setInterval(() => {
+    this.interval = setInterval(() => {
       this.findNewMessages();
     }, 5000);
   }
 
   async loadMessages(page = 0) {
-    const messages = (await this.chatService.findAllMessages(page));
+    this.page = page;
+    const messagesResponse = (await this.chatService.findAllMessages(page));
+    this.hasNext = !messagesResponse.last;
+    const messages = messagesResponse.content.reverse();
     if (messages.length > 0) {
       this.messages = messages.concat(this.messages);
     }
   }
 
   async findNewMessages() {
-    let messages = (await this.chatService.findAllMessages());
+    let messages = (await this.chatService.findAllMessages()).content;
+    messages = messages.reverse();
     if (messages.length > 0) {
       if (this.messages.length !== 0) {
         messages = messages.slice(messages.findIndex(msg => msg.id === this.messages[this.messages.length - 1].id), messages.length);
@@ -46,7 +53,9 @@ export class ChatComponent implements OnInit, AfterViewInit {
       if (messages.length > 0) {
         messages = messages.slice(1, messages.length);
         this.messages = this.messages.concat(messages);
-        this.updateScroll();
+        if (messages.length > 0) {
+          this.updateScroll();
+        }
         if (!this.showChat) {
           if (messages.length > 0) {
             this.notify = true;
@@ -92,6 +101,10 @@ export class ChatComponent implements OnInit, AfterViewInit {
       this.updateScroll();
       this.notify = false;
     }
+  }
+
+  ngOnDestroy(): void {
+    clearInterval(this.interval);
   }
 
 }
