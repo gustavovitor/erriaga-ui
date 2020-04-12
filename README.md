@@ -1,27 +1,20 @@
-# ErriagaUi
+# Erriagá
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.0.
+Frontend feito em Javascript com Angular 9.
 
-## Development server
+Essa aplicação consome a API do Erriagá disponível [aqui.](https://github.com/gustavovitor/erriaga-api)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+# O Frontend
 
-## Code scaffolding
+### Configurações
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Para subir a aplicação basta clonar/fazer o download do projeto, entrar na pasta que contém o ```packages.json``` e executar o comando
+```npm install``` para baixar as dependências.
 
-## Build
+Após fazer o download das dependências, basta executar o comando ```ng serve``` e abrir o navegador [aqui.](http://localhost:4200)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+### Observações Importantes
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+O frontend trabalha com JWT e armazena o seu ```access_token``` no local storage do seu navegador
+logo, caso você esteja trabalhando com algum frontend que também tenha o mesmo comportamento no host ```http://localhost:4200```
+será necessário limpar o cache/dados de navegação ou inicializar essa aplicação no modo anônimo.
