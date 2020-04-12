@@ -1,12 +1,13 @@
 <div class="card chat-card">
-  <div class="card-header cursor-pointer" (click)="showChat = !showChat; updateScroll()">
+  <div class="card-header cursor-pointer" (click)="openChat()">
     <div class="container-fluid">
       <div class="row">
         <div class="col d-flex align-items-center">
           <h6 class="card-title m-0"><i class="fa fa-newspaper-o"></i>&nbsp;<strong>Chat</strong></h6>
         </div>
         <div class="col d-flex align-items-center justify-content-end">
-          <i [class]="!showChat ? 'fa fa-arrow-up' : 'fa fa-arrow-down'" class="text-primary"></i>
+          <i [class]="!showChat ? 'fa fa-arrow-up' : 'fa fa-arrow-down'" class="text-primary" *ngIf="!notify"></i>
+          <div *ngIf="notify" class="badge text-white" style="background-color: orangered"><strong>{{ newMessagesCount }}</strong></div>
         </div>
       </div>
     </div>

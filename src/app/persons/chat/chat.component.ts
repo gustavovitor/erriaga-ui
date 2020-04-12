@@ -18,6 +18,8 @@ export class ChatComponent implements OnInit, AfterViewInit {
   message: string;
   showChat = false;
   loading = false;
+  notify = false;
+  newMessagesCount = 0;
 
   messages: Array<ChatMessageModel> = [];
 
@@ -42,8 +44,15 @@ export class ChatComponent implements OnInit, AfterViewInit {
         messages = messages.slice(messages.findIndex(msg => msg.id === this.messages[this.messages.length - 1].id), messages.length);
       }
       if (messages.length > 0) {
-        this.messages = this.messages.concat(messages.slice(1, messages.length));
+        messages = messages.slice(1, messages.length);
+        this.messages = this.messages.concat(messages);
         this.updateScroll();
+        if (!this.showChat && messages.length > 0) {
+          this.notify = true;
+          this.newMessagesCount = this.newMessagesCount + messages.length;
+        } else {
+          this.newMessagesCount = 0;
+        }
       }
     }
   }
@@ -65,6 +74,7 @@ export class ChatComponent implements OnInit, AfterViewInit {
      if (chatMessageModel) {
        this.message = null;
        this.messages.push(chatMessageModel);
+       this.updateScroll();
      }
      this.loading = false;
    } catch (e) {
@@ -72,6 +82,14 @@ export class ChatComponent implements OnInit, AfterViewInit {
        this.errorHandlerService.handler(e.error);
      }
    }
+  }
+
+  openChat() {
+    this.showChat = !this.showChat;
+    if (this.showChat) {
+      this.updateScroll();
+      this.notify = false;
+    }
   }
 
 }
