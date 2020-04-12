@@ -5,6 +5,9 @@ export const CUSTOM_ERRORS: ErrorMessage[] = [
     error: 'required',
     format: requiredFormat
   }, {
+    error: 'pattern',
+    format: pattern
+  }, {
     error: 'email',
     format: emailFormat
   }, {
@@ -21,6 +24,10 @@ export const CUSTOM_ERRORS: ErrorMessage[] = [
 
 export function requiredFormat(label: string, error: any): string {
   return `${label} é obrigatório(a)!`;
+}
+
+export function pattern(label: string, error: any): string {
+  return `${label} está inválido!`;
 }
 
 export function emailFormat(label: string, error: any): string {

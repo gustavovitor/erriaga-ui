@@ -81,7 +81,20 @@
         </div>
       </div>
     </div>
-    <div class="row">
+
+    <div class="row" *ngIf="personForm.get('registerAt').value">
+      <div class="col">
+        <strong>Registrado em:</strong> {{ personForm.get('registerAt').value | date: 'dd/MM/yyyy HH:mm' }}
+      </div>
+    </div>
+
+    <div class="row" *ngIf="personForm.get('modifiedAt').value">
+      <div class="col">
+        <strong>Modificado em:</strong> {{ personForm.get('modifiedAt').value | date: 'dd/MM/yyyy HH:mm' }}
+      </div>
+    </div>
+
+    <div class="row mt-3">
       <div class="col">
         <button type="submit" class="btn btn-primary text-white" [disabled]="!personForm.enabled">Salvar</button>
       </div>

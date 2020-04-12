@@ -89,6 +89,100 @@
           </div>
         </div>
       </div>
+
+      <div class="col-sm-12 col-md-6">
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label for="birthDateStart">Data de Registro</label>
+              <div class="row">
+                <div class="col-5">
+                  <div class="input-group">
+                    <input id="registerDateStart" type="text" class="form-control" aria-label="Data de Registro" name="registerDateStart"
+                           [ngModel]="filter.registerDateStart | date: 'dd/MM/yyyy HH:mm'" (ngModelChange)="filter.registerDateStart=$event" [placeholder]="placeHolder" disabled>
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-secondary dropdown-toggle register-date-start" type="button" data-toggle="dropdown"
+                              aria-haspopup="true" aria-expanded="false"><i class="oi oi-calendar"></i></button>
+                      <div class="dropdown-menu" (click)="keepDropDownOpen($event)">
+                        <div style="width:360px;">
+                          <dl-date-time-picker [(ngModel)]="filter.registerDateStart" maxView="year" minView="minute"
+                                               name="registerDateStart" [ngModelOptions]="{standalone: true}"></dl-date-time-picker>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-2 text-center">
+                  até
+                </div>
+                <div class="col-5">
+                  <div class="input-group">
+                    <input id="registerDateEnd" type="text" class="form-control" aria-label="Data de Registro" name="registerDateEnd"
+                           [ngModel]="filter.registerDateEnd | date: 'dd/MM/yyyy HH:mm'" (ngModelChange)="filter.registerDateEnd=$event" [placeholder]="placeHolder" disabled>
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-secondary dropdown-toggle register-date-end" type="button" data-toggle="dropdown"
+                              aria-haspopup="true" aria-expanded="false"><i class="oi oi-calendar"></i></button>
+                      <div class="dropdown-menu" (click)="keepDropDownOpen($event)">
+                        <div style="width:360px;">
+                          <dl-date-time-picker [(ngModel)]="filter.registerDateEnd" maxView="year" minView="minute"
+                                               name="registerDateEnd" [ngModelOptions]="{standalone: true}"></dl-date-time-picker>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-12 col-md-6">
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label for="birthDateStart">Data de Modificação</label>
+              <div class="row">
+                <div class="col-5">
+                  <div class="input-group">
+                    <input id="modifiedDateStart" type="text" class="form-control" aria-label="Data de Modificação" name="modifiedDateStart"
+                           [ngModel]="filter.modifiedDateStart | date: 'dd/MM/yyyy HH:mm'" (ngModelChange)="filter.modifiedDateStart=$event" [placeholder]="placeHolder" disabled>
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-secondary dropdown-toggle modified-date-start" type="button" data-toggle="dropdown"
+                              aria-haspopup="true" aria-expanded="false"><i class="oi oi-calendar"></i></button>
+                      <div class="dropdown-menu" (click)="keepDropDownOpen($event)">
+                        <div style="width:360px;">
+                          <dl-date-time-picker [(ngModel)]="filter.modifiedDateStart" maxView="year" minView="minute"
+                                               name="modifiedDateStart" [ngModelOptions]="{standalone: true}"></dl-date-time-picker>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-2 text-center">
+                  até
+                </div>
+                <div class="col-5">
+                  <div class="input-group">
+                    <input id="modifiedDateEnd" type="text" class="form-control" aria-label="Data de Modificação" name="modifiedDateEnd"
+                           [ngModel]="filter.modifiedDateEnd | date: 'dd/MM/yyyy HH:mm'" (ngModelChange)="filter.modifiedDateEnd=$event" [placeholder]="placeHolder" disabled>
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-secondary dropdown-toggle register-date-end" type="button" data-toggle="dropdown"
+                              aria-haspopup="true" aria-expanded="false"><i class="oi oi-calendar"></i></button>
+                      <div class="dropdown-menu" (click)="keepDropDownOpen($event)">
+                        <div style="width:360px;">
+                          <dl-date-time-picker [(ngModel)]="filter.modifiedDateEnd" maxView="year" minView="minute"
+                                               name="modifiedDateEnd" [ngModelOptions]="{standalone: true}"></dl-date-time-picker>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="row">
       <div class="col d-flex align-items-center justify-content-end">

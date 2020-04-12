@@ -37,7 +37,9 @@ export class PersonFormComponent implements OnInit {
     nationality: ['', Validators.maxLength(255)],
     cpf: ['', Validators.compose([
       Validators.required, Validators.pattern(/\/([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})/)
-    ])]
+    ])],
+    registerAt: [],
+    modifiedAt: []
   });
 
   keepDropDownOpen(event: Event) {

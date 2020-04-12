@@ -12,5 +12,11 @@ export class PersonModel {
 export class PersonFilterModel extends PersonModel {
   birthDateStart: Date;
   birthDateEnd: Date;
+
+  registerDateStart: Date;
+  registerDateEnd: Date;
+
+  modifiedDateStart: Date;
+  modifiedDateEnd: Date;
 }
 
