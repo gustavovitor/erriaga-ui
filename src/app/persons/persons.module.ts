@@ -6,14 +6,17 @@ import { PersonListPageComponent } from './pages/person-list-page/person-list-pa
 import { PersonFormPageComponent } from './pages/person-form-page/person-form-page.component';
 import { PersonComponentsModule } from './person-components/person-components.module';
 import { PersonsComponent } from './persons.component';
+import { ChatComponent } from './chat/chat.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [PersonListPageComponent, PersonFormPageComponent, PersonsComponent],
+  declarations: [PersonListPageComponent, PersonFormPageComponent, PersonsComponent, ChatComponent],
   imports: [
     CommonModule,
     PersonComponentsModule,
-    PersonsRoutingModule
+    PersonsRoutingModule,
+    FormsModule
   ],
   bootstrap: [PersonsComponent]
 })

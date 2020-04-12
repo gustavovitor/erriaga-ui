@@ -1,0 +1,54 @@
+.chat-size {
+  height: 400px;
+}
+
+.card-body-sizes {
+  height: 100%;
+}
+
+.chat-card {
+  z-index: 9999999;
+}
+
+.chat-input {
+  border-top: solid rgba(0, 0, 0, 0.2) 1px;
+  background-color: white;
+  padding-top: 12px;
+  height: 60px;
+  width: 100%;
+}
+
+.chat-background {
+  background-color: #F6F8FA;
+}
+
+.message {
+  padding-bottom: 16px;
+  width: 100%;
+}
+
+.message-owner {
+  font-size: 14px;
+}
+
+.message-body {
+  width: 100%;
+  border: solid rgba(0, 0, 0, 0.2) 1px;
+  font-size: 16px;
+  padding: 12px;
+  background-color: white;
+}
+
+.message-time {
+  font-size: 12px;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.no-message {
+  padding: 16px;
+  font-size: 12px;
+  color: gray;
+}

@@ -1,0 +1,41 @@
+<div class="card chat-card">
+  <div class="card-header cursor-pointer" (click)="showChat = !showChat; updateScroll()">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col d-flex align-items-center">
+          <h6 class="card-title m-0"><i class="fa fa-newspaper-o"></i>&nbsp;<strong>Chat</strong></h6>
+        </div>
+        <div class="col d-flex align-items-center justify-content-end">
+          <i [class]="!showChat ? 'fa fa-arrow-up' : 'fa fa-arrow-down'" class="text-primary"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-body chat-size chat-background d-flex flex-column justify-content-end" *ngIf="showChat" [@inOutOpacityAnimation]>
+    <div class="chat-messages-box overflow-auto" id="chatMessages">
+      <div class="no-message" *ngIf="messages.length == 0">
+        Nenhuma mensagem encontrada..
+      </div>
+      <div class="message" *ngFor="let msg of messages">
+        <div class="message-owner">
+          {{ msg.owner.name }}
+        </div>
+        <div class="message-body">
+          {{ msg.message }}
+          <div class="message-time">
+            {{ msg.messageDatetime | date: 'dd/MM/yyyy - HH:mm'}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="chat-input">
+      <div class="d-flex justify-content-between" style="width: 100%">
+        <form (ngSubmit)="insertMessage()" class="d-flex justify-content-between" style="width: 100%">
+          <input style="width: 65%" type="text" class="form-control" id="message" placeholder="Mensagem" [(ngModel)]="message" [ngModelOptions]="{standalone: true}" [disabled]="loading">
+          <button style="width: 30%" type="submit" class="btn btn-primary text-white" [disabled]="loading">Enviar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
