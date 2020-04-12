@@ -47,9 +47,11 @@ export class ChatComponent implements OnInit, AfterViewInit {
         messages = messages.slice(1, messages.length);
         this.messages = this.messages.concat(messages);
         this.updateScroll();
-        if (!this.showChat && messages.length > 0) {
-          this.notify = true;
-          this.newMessagesCount = this.newMessagesCount + messages.length;
+        if (!this.showChat) {
+          if (messages.length > 0) {
+            this.notify = true;
+            this.newMessagesCount = this.newMessagesCount + messages.length;
+          }
         } else {
           this.newMessagesCount = 0;
         }
