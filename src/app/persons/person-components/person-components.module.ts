@@ -7,6 +7,7 @@ import { PersonFilterFormComponent } from './person-filter-form/person-filter-fo
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DlDateTimeDateModule, DlDateTimeInputModule, DlDateTimePickerModule } from 'angular-bootstrap-datetimepicker';
 import { NgBootstrapFormValidationModule } from 'ng-bootstrap-form-validation';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -15,6 +16,7 @@ import { NgBootstrapFormValidationModule } from 'ng-bootstrap-form-validation';
   imports: [
     CommonModule,
     SharedModule,
+    NgbModalModule,
     DlDateTimeDateModule,
     NgBootstrapFormValidationModule,
     DlDateTimePickerModule,

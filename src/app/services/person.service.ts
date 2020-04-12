@@ -25,4 +25,8 @@ export class PersonService {
     return this.httpClient.patch<PersonModel>(`${this.URL}/${person.id}`, person).toPromise();
   }
 
+  delete(personId: number): Promise<void> {
+    return this.httpClient.delete<void>(`${this.URL}/${personId}`).toPromise();
+  }
+
 }

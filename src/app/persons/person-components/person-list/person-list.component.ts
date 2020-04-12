@@ -4,6 +4,10 @@ import { DataTableAction } from '../../../shared/data-table/data-table.component
 import { PersonFilterModel, PersonModel } from '../../../models/person-model';
 import { Router } from '@angular/router';
 import { environment } from '../../../../environments/environment';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { YesNoModalComponent, YesNoModalConfig } from '../../../shared/yes-no-modal/yes-no-modal.component';
+import { PersonService } from '../../../services/person.service';
+import { ToastService } from '../../../services/toast.service';
 
 @Component({
   selector: 'app-person-list',
@@ -12,7 +16,10 @@ import { environment } from '../../../../environments/environment';
 })
 export class PersonListComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+              private personService: PersonService,
+              private toastService: ToastService,
+              private modalService: NgbModal) { }
 
   @ViewChild('personListTable') personListTable;
 
@@ -44,8 +51,18 @@ export class PersonListComponent implements OnInit {
     this.personListTable.instanceTable.ajax.reload();
   }
 
-  remove(data: PersonModel) {
+  async remove(data: PersonModel) {
+    const modalRef = this.modalService.open(YesNoModalComponent, {size: 'sm'});
+    let yesNoModalConfig: YesNoModalConfig = new YesNoModalConfig();
+    yesNoModalConfig = {...yesNoModalConfig, message: `Tem certeza que deseja remover o(a) ${data.name}?`};
+    modalRef.componentInstance.yesNoModalConfig = yesNoModalConfig;
 
+    const result = await modalRef.result;
+    if (result) {
+      await this.personService.delete(data.id);
+      this.personListTable.instanceTable.ajax.reload();
+      this.toastService.success(`Prontinho, removemos o(a): ${data.name}`);
+    }
   }
 
   ngOnInit(): void {
