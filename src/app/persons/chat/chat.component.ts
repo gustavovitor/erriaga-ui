@@ -2,6 +2,7 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angula
 import { inOutOpacityAnimation } from '../../shared/animations/animations';
 import { ChatService } from '../../services/chat.service';
 import { ChatMessageModel } from '../../models/chat-message-model';
+import { ErrorHandlerService } from '../../services/error-handler.service';
 
 @Component({
   selector: 'app-chat',
@@ -11,7 +12,8 @@ import { ChatMessageModel } from '../../models/chat-message-model';
 })
 export class ChatComponent implements OnInit, AfterViewInit {
 
-  constructor(private chatService: ChatService) { }
+  constructor(private chatService: ChatService,
+              private errorHandlerService: ErrorHandlerService) { }
 
   message: string;
   showChat = false;
@@ -57,13 +59,19 @@ export class ChatComponent implements OnInit, AfterViewInit {
   }
 
   async insertMessage() {
-    this.loading = true;
-    const chatMessageModel = await this.chatService.insert(this.message);
-    if (chatMessageModel) {
-      this.message = null;
-      this.messages.push(chatMessageModel);
-    }
-    this.loading = false;
+   try {
+     this.loading = true;
+     const chatMessageModel = await this.chatService.insert(this.message);
+     if (chatMessageModel) {
+       this.message = null;
+       this.messages.push(chatMessageModel);
+     }
+     this.loading = false;
+   } catch (e) {
+     if (e.error) {
+       this.errorHandlerService.handler(e.error);
+     }
+   }
   }
 
 }
