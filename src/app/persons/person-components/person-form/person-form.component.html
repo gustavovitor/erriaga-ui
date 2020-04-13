@@ -24,7 +24,7 @@
 
       <div class="col-sm-12 col-md-6">
         <div class="form-group">
-          <label for="name">Data de Nascimento</label>
+          <label for="name">Data de Nascimento (*) obrigatório</label>
           <div class="input-group">
             <input id="birthDateStart" type="text" class="form-control" aria-label="Data de Nascimento" name="birthDateStart"
                    [ngModel]="birthDateModel | date: 'dd/MM/yyyy'" (ngModelChange)="birthDateModel=$event" [ngModelOptions]="{standalone: true}" disabled>
@@ -73,7 +73,7 @@
             </div>
             <div class="col">
               <div class="custom-control custom-radio">
-                <input type="radio" class="custom-control-input" id="gender3" name="gender" formControlName="gender" [value]="null">
+                <input type="radio" class="custom-control-input" id="gender3" name="gender" formControlName="gender" value="NULL">
                 <label class="custom-control-label" for="gender3">Prefiro não informar</label>
               </div>
             </div>
