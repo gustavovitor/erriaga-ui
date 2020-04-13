@@ -37,7 +37,7 @@
       <div class="d-flex justify-content-between" style="width: 100%">
         <form (ngSubmit)="insertMessage()" class="d-flex justify-content-between" style="width: 100%">
           <input style="width: 65%" type="text" class="form-control" id="message" placeholder="Mensagem" [(ngModel)]="message" [ngModelOptions]="{standalone: true}" [disabled]="loading" maxlength="255">
-          <button style="width: 30%" type="submit" class="btn btn-primary text-white" [disabled]="loading">Enviar</button>
+          <button style="width: 30%" type="submit" class="btn btn-primary text-white" [disabled]="loading || message.trim() === ''">Enviar</button>
         </form>
       </div>
     </div>
