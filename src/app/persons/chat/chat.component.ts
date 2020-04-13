@@ -15,7 +15,7 @@ export class ChatComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(private chatService: ChatService,
               private errorHandlerService: ErrorHandlerService) { }
 
-  message: string;
+  message: string = '';
   showChat = false;
   loading = false;
   notify = false;
@@ -83,7 +83,7 @@ export class ChatComponent implements OnInit, AfterViewInit, OnDestroy {
      this.loading = true;
      const chatMessageModel = await this.chatService.insert(this.message);
      if (chatMessageModel) {
-       this.message = null;
+       this.message = '';
        this.messages.push(chatMessageModel);
        this.updateScroll();
      }
