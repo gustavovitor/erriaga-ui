@@ -1,9 +1,9 @@
-const BASE_URL = 'https://erriaga-api.herokuapp.com/api';
+const BASE_URL = 'https://app/api';
 
 export const environment = {
   production: true,
 
-  WhitelistedDomains: [/erriaga-api.herokuapp.com/],
+  WhitelistedDomains: [/app/],
   BlacklistedDomains: [/\/api\/oauth\/token/, /\/api\/public\/user\/register/],
 
   URL_AUTH: BASE_URL + '/oauth/token',
